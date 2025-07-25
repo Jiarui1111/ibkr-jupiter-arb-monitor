@@ -220,8 +220,18 @@ async function main() {
 
 function logAndNotify(conid, message) {
     const now = Date.now();
-    const lastTime = alertCache.get(conid) || 0;
 
+    const hour = now.getUTCHours();
+    const minute = now.getUTCMinutes();
+
+    const isBeforeStart = hour < 13 || (hour === 13 && minute < 30);
+    const isAfterEnd = hour > 20;
+
+    if (isBeforeStart || isAfterEnd) {
+        return; 
+    }
+    
+    const lastTime = alertCache.get(conid) || 0;
     if (now - lastTime < ALERT_INTERVAL) {
         return; 
     }
