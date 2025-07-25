@@ -10,7 +10,7 @@ const jobName = 'stock_monitor';
 
 const channel = process.env.SLACK_CHANNEL;
 const token = process.env.SLACK_BOT_TOKEN;
-const spread = 0.016;
+const spread = 0.02;
 const ALERT_INTERVAL = 60 * 1000;
 
 const ibPriceCache = {};
