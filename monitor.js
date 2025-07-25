@@ -219,10 +219,11 @@ async function main() {
 }
 
 function logAndNotify(conid, message) {
-    const now = Date.now();
+    const date = new Date();
+    const now = date.getTime();
 
-    const hour = now.getUTCHours();
-    const minute = now.getUTCMinutes();
+    const hour = date.getUTCHours();
+    const minute = date.getUTCMinutes();
 
     const isBeforeStart = hour < 13 || (hour === 13 && minute < 30);
     const isAfterEnd = hour > 20;
